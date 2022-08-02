@@ -1,0 +1,12 @@
+/.github export-ignore
+/.editorconfig export-ignore
+/.gitignore export-ignore
+/Build export-ignore
+/Tests export-ignore
+
+# Enforce checkout with linux lf consistent over all platforms
+*.css text eol=lf
+*.scss text eol=lf
+*.php text eol=lf
+*.rst text eol=lf
+*.md text eol=lf

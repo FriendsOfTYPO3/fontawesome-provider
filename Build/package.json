@@ -1,0 +1,19 @@
+{
+  "name": "typo3-fontawesome-provider",
+  "description": "Integrates legacy FontawesomeIconProvider and FontAwesome 4.7",
+  "repository": "https://github.com/typo3/typo3",
+  "readme": "../README.md",
+  "homepage": "https://typo3.org",
+  "author": "TYPO3 CMS Core Team",
+  "version": "1.0.0",
+  "license": "GPL-2.0+",
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.54.0"
+  }
+}
