@@ -901,7 +901,7 @@ class FontawesomeIconProvider implements IconProviderInterface
     protected function createSvgIcons(): array
     {
         $icons = [];
-        $doc = $this->getSvgContents('EXT:backend/Resources/Public/Fonts/FontAwesome/fontawesome-webfont.svg');
+        $doc = $this->getSvgContents('EXT:fontawesome_provider/Resources/Public/Fonts/fontawesome-webfont.svg');
         if ($doc === null) {
             throw new \RuntimeException('Fontawsome SVG webfont could not be loaded.', 1612868955);
         }
