@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  FriendsOfTYPO3\FontawesomeProvider\:
+    resource: '../Classes/*'
+
+  FriendsOfTYPO3\FontawesomeProvider\Imaging\IconProvider\FontawesomeIconProvider:
+    public: true
+    arguments:
+      $assetsCache: '@cache.assets'
+      $cacheIdentifier: '@=service("TYPO3\\CMS\\Core\\Package\\Cache\\PackageDependentCacheIdentifier").withPrefix("FontawesomeSvgIcons").toString()'
