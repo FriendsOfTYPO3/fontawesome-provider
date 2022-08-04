@@ -40,6 +40,9 @@
     },
     "extra": {
         "typo3/cms": {
+            "Package": {
+                "serviceProvider": "FriendsOfTYPO3\\FontawesomeProvider\\ServiceProvider"
+            },
             "app-dir": ".build",
             "extension-key": "fontawesome_provider",
             "web-dir": ".build/public"
@@ -54,11 +57,11 @@
             "php -r \"is_dir('.cache') || mkdir('.cache');\"",
             "php-cs-fixer fix --config=Build/php-cs-fixer.php"
         ],
-        "tests": [
-            "phpunit -c Build/phpunit.xml"
-        ],
         "phpstan": [
             "phpstan analyze --configuration Build/phpstan.neon"
+        ],
+        "tests": [
+            "phpunit -c Build/phpunit.xml"
         ]
     }
 }

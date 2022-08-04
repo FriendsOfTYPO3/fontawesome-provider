@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -838,7 +840,7 @@ class FontawesomeIconProvider implements IconProviderInterface
      */
     public function prepareIconMarkup(Icon $icon, array $options = []): void
     {
-        $icon->setMarkup($this->generateMarkup($icon, $options));
+        $icon->setMarkup($this->generateMarkup($options));
         $icon->setAlternativeMarkup(self::MARKUP_IDENTIFIER_INLINE, $this->generateInlineMarkup($options));
     }
 
@@ -848,7 +850,7 @@ class FontawesomeIconProvider implements IconProviderInterface
     protected function getName(array $options): string
     {
         $name = (string)($options['name'] ?? '');
-        if (strlen($name) === 0) {
+        if ($name === '') {
             throw new \InvalidArgumentException('The option "name" is required and must not be empty', 1440754978);
         }
         /* Not available in font-awesome, used as a (blank) placeholder icon */
@@ -866,7 +868,7 @@ class FontawesomeIconProvider implements IconProviderInterface
      *
      * @throws \InvalidArgumentException
      */
-    protected function generateMarkup(Icon $icon, array $options): string
+    protected function generateMarkup(array $options): string
     {
         return '<span class="icon-unify"><i class="fa fa-' . htmlspecialchars($this->getName($options), ENT_QUOTES, 'UTF-8') . '"></i></span>';
     }
