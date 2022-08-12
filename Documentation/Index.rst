@@ -83,8 +83,6 @@ To register icons from FontAwesome create a file called
            'provider' => \FriendsOfTYPO3\FontawesomeProvider\Imaging\IconProvider\FontawesomeIconProvider::class,
            // The FontAwesome icon name
            'name' => 'spinner',
-           // Additional css classes
-           'additionalClasses' => 'fa-fw',
            // All icon providers provide the possibility to register an icon that spins
            'spinning' => true,
        ],
