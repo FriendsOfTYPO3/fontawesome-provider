@@ -67,6 +67,30 @@ For compatibility reasons, this extension is installable in TYPO3 v11 already.
 If installed in TYPO3 v12, additional CSS is loaded that provides the
 :css:`fa-*` classes.
 
+Usage
+=====
+
+To register icons from FontAwesome create a file called
+:file:`Configuration/Icons.php` in your extension (if it does not exist yet):
+
+.. code-block:: php
+   :caption: EXT:your_extension/Configuration/Icons.php
+
+   <?php
+   return [
+       // Icon identifier
+       'myfontawesomeicon' => [
+           'provider' => \FriendsOfTYPO3\FontawesomeProvider\Imaging\IconProvider\FontawesomeIconProvider::class,
+           // The FontAwesome icon name
+           'name' => 'spinner',
+           // All icon providers provide the possibility to register an icon that spins
+           'spinning' => true,
+       ],
+   ];
+
+Visit the :ref:`t3coreapi:icon` chapter in TYPO3 Explained for more information
+about icon registration.
+
 Current state
 =============
 
