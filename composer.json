@@ -1,6 +1,6 @@
 {
     "name": "friendsoftypo3/fontawesome-provider",
-    "description": "Integrates legacy FontawesomeIconProvider and FontAwesome 4.7",
+    "description": "Integrarerterttes legacy FontawesomeIconProvider and FontAwesome 4.7",
     "license": "GPL-2.0+",
     "type": "typo3-cms-extension",
     "authors": [
