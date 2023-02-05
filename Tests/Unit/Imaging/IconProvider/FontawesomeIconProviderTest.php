@@ -54,7 +54,7 @@ class FontawesomeIconProviderTest extends TestCase
      *
      * @return array<string, array<int, string|int>>
      */
-    public function wrongNamesDataProvider(): array
+    public static function wrongNamesDataProvider(): array
     {
         return [
             'name with spaces' => ['name with spaces', 1440754979],
