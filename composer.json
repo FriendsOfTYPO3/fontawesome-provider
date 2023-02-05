@@ -39,6 +39,11 @@
         "vendor-dir": ".build/vendor"
     },
     "extra": {
+        "typo3/class-alias-loader": {
+            "class-alias-maps": [
+                "Migrations/Code/ClassAliasMap.php"
+            ]
+        },
         "typo3/cms": {
             "Package": {
                 "serviceProvider": "FriendsOfTYPO3\\FontawesomeProvider\\ServiceProvider"
