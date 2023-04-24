@@ -7,17 +7,12 @@ defined('TYPO3') or die();
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 (static function () {
-    if (!isset($GLOBALS['TBE_STYLES']['skins'])) {
-        return;
-    }
-
     $typo3VersionNumber = VersionNumberUtility::convertVersionNumberToInteger(
         VersionNumberUtility::getNumericTypo3Version()
     );
 
     // If TYPO3 version is at least 12
     if ($typo3VersionNumber >= 12000000) {
-        // Register as a skin
-        $GLOBALS['TBE_STYLES']['skins']['fontawesome_provider']['stylesheetDirectories']['css'] = 'EXT:fontawesome_provider/Resources/Public/Css/';
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['fontawesome_provider'] = 'EXT:fontawesome_provider/Resources/Public/Css/fontawesome.css';
     }
 })();
