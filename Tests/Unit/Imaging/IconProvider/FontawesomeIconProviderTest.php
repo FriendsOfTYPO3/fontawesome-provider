@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace TYPO3\CMS\Core\Tests\Unit\Imaging\IconProvider;
 
 use FriendsOfTYPO3\FontawesomeProvider\Imaging\IconProvider\FontawesomeIconProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Imaging\Icon;
@@ -40,9 +42,7 @@ class FontawesomeIconProviderTest extends TestCase
         $this->icon->setSize(Icon::SIZE_SMALL);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function prepareIconMarkupWithNameReturnsInstanceOfIconWithCorrectMarkup(): void
     {
         $this->subject->prepareIconMarkup($this->icon, ['name' => 'times']);
@@ -66,11 +66,11 @@ class FontawesomeIconProviderTest extends TestCase
     }
 
     /**
-     * @dataProvider wrongNamesDataProvider
      * @param string $name
      * @param int $expectedExceptionCode
-     * @test
      */
+    #[DataProvider('wrongNamesDataProvider')]
+    #[Test]
     public function prepareIconMarkupWithInvalidNameThrowsException(string $name, int $expectedExceptionCode): void
     {
         $this->expectException(\InvalidArgumentException::class);
