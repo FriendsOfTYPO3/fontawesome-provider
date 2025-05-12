@@ -14,11 +14,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: [ '8.1', '8.2' ]
+        php-versions: [ '8.1', '8.2', '8.3', '8.4' ]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP ${{ matrix.php-versions }}
         uses: shivammathur/setup-php@v2
@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -47,7 +47,8 @@ jobs:
         run: composer install --no-progress --no-interaction
 
       - name: PHP CGL
-        run: composer cgl
+        # PHP_CS_FIXER_IGNORE_ENV is enabled because of PHP 8.4
+        run: PHP_CS_FIXER_IGNORE_ENV=1 composer cgl
         env:
           COMPOSER_PROCESS_TIMEOUT: 1200
 
