@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -31,11 +32,6 @@
 if (PHP_SAPI !== 'cli') {
     die('This script supports command line usage only. Please check your command.');
 }
-// Define in which folders to search and which folders to exclude
-// Exclude all files and directories from .gitignore
-$finder = (new PhpCsFixer\Finder())
-    ->ignoreVCSIgnored(true)
-    ->in(realpath(__DIR__ . '/../'));
 // Return a Code Sniffing configuration using
 // all sniffers needed for PSR-2
 // and additionally:
@@ -46,6 +42,15 @@ $finder = (new PhpCsFixer\Finder())
 //  - Ensure Concatenation to have at least one whitespace around
 //  - Remove trailing whitespace at the end of blank lines.
 return (new \PhpCsFixer\Config())
+    ->setFinder(
+        (new PhpCsFixer\Finder())
+            ->ignoreVCSIgnored(true)
+            ->in([
+                __DIR__ . '/../Classes',
+                __DIR__ . '/../Migrations',
+                __DIR__ . '/../Tests',
+            ])
+    )
     ->setCacheFile(__DIR__ . '/../.cache/.php-cs-fixer.cache')
     ->setRiskyAllowed(true)
     ->setRules([
@@ -53,20 +58,17 @@ return (new \PhpCsFixer\Config())
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_after_opening_tag' => true,
-        'braces' => ['allow_single_line_closure' => true],
         'cast_spaces' => ['space' => 'none'],
-        'compact_nullable_typehint' => true,
         'concat_space' => ['spacing' => 'one'],
         'declare_equal_normalize' => ['space' => 'none'],
         'dir_constant' => true,
         'function_to_constant' => ['functions' => ['get_called_class', 'get_class', 'get_class_this', 'php_sapi_name', 'phpversion', 'pi']],
-        'function_typehint_space' => true,
         'lowercase_cast' => true,
         'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
         'modernize_strpos' => true,
         'modernize_types_casting' => true,
         'native_function_casing' => true,
-        'new_with_braces' => true,
+        'new_with_parentheses' => true,
         'no_alias_functions' => true,
         'no_blank_lines_after_phpdoc' => true,
         'no_empty_phpdoc' => true,
@@ -96,10 +98,11 @@ return (new \PhpCsFixer\Config())
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'return_type_declaration' => ['space_before' => 'none'],
         'single_quote' => true,
+        'single_space_around_construct' => true,
         'single_line_comment_style' => ['comment_types' => ['hash']],
         'single_trait_insert_per_statement' => true,
         'trailing_comma_in_multiline' => ['elements' => ['arrays']],
+        'type_declaration_spaces' => true,
         'whitespace_after_comma_in_array' => true,
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
-    ])
-    ->setFinder($finder);
+    ]);
