@@ -12,7 +12,7 @@ function buildStyles() {
 }
 
 function copyFonts() {
-    return src('node_modules/font-awesome/fonts/*')
+    return src('node_modules/font-awesome/fonts/*', {encoding: false})
         .pipe(dest('../Resources/Public/Fonts'));
 }
 
